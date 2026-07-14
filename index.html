@@ -55,6 +55,21 @@
     const kpopFirst=document.querySelector('#kpop .category-shot');
     kpopFirst.classList.add('video-shot');
     kpopFirst.innerHTML='<video controls playsinline preload="metadata" aria-label="Unboxing de un disco de BLACKPINK"><source src="assets/unboxing-blackpink.mp4" type="video/mp4">Tu navegador no puede reproducir este vídeo.</video><span>Unboxing · BLACKPINK</span>';
+    const proposalForm=document.querySelector('.modal-box');
+    proposalForm.addEventListener('submit',event=>{
+      event.preventDefault();
+      const name=document.getElementById('name').value.trim();
+      const email=document.getElementById('email').value.trim();
+      const message=document.getElementById('message').value.trim();
+      const subject=encodeURIComponent('Propuesta UGC · '+name);
+      const body=encodeURIComponent('Nombre o marca: '+name+'\nEmail de contacto: '+email+'\n\nContenido solicitado:\n'+message);
+      window.open('https://mail.google.com/mail/?view=cm&fs=1&to=cogeso.ugc@gmail.com&su='+subject+'&body='+body,'_blank','noopener');
+    });
+    document.querySelectorAll('a[href="mailto:cogeso.ugc@gmail.com"]').forEach(link=>{
+      link.href='https://mail.google.com/mail/?view=cm&fs=1&to=cogeso.ugc@gmail.com&su='+encodeURIComponent('Consulta desde el portfolio Cogeso UGC');
+      link.target='_blank';
+      link.rel='noopener';
+    });
   </script>
 </body>
 </html>
