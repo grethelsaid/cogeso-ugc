@@ -4,6 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Portfolio UGC de Cogeso para marcas de tecnología, apps, viajes y K-pop.">
+  <link rel="icon" type="image/png" href="assets/logo-cogeso.png">
+  <link rel="apple-touch-icon" href="assets/logo-cogeso.png">
   <title>Cogeso UGC · Portfolio de contenido</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -56,6 +58,9 @@
     kpopFirst.classList.add('video-shot');
     kpopFirst.innerHTML='<video controls playsinline preload="metadata" aria-label="Unboxing de un disco de BLACKPINK"><source src="assets/unboxing-blackpink.mp4" type="video/mp4">Tu navegador no puede reproducir este vídeo.</video><span>Unboxing · BLACKPINK</span>';
     const proposalForm=document.querySelector('.modal-box');
+    proposalForm.removeAttribute('action');
+    proposalForm.removeAttribute('method');
+    proposalForm.removeAttribute('enctype');
     proposalForm.addEventListener('submit',event=>{
       event.preventDefault();
       const name=document.getElementById('name').value.trim();
@@ -64,6 +69,8 @@
       const subject=encodeURIComponent('Propuesta UGC · '+name);
       const body=encodeURIComponent('Nombre o marca: '+name+'\nEmail de contacto: '+email+'\n\nContenido solicitado:\n'+message);
       window.open('https://mail.google.com/mail/?view=cm&fs=1&to=cogeso.ugc@gmail.com&su='+subject+'&body='+body,'_blank','noopener');
+      modal.classList.remove('open');
+      proposalForm.reset();
     });
     document.querySelectorAll('a[href="mailto:cogeso.ugc@gmail.com"]').forEach(link=>{
       link.href='https://mail.google.com/mail/?view=cm&fs=1&to=cogeso.ugc@gmail.com&su='+encodeURIComponent('Consulta desde el portfolio Cogeso UGC');
